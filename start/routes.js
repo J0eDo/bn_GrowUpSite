@@ -5,16 +5,10 @@ const Route = use('Route')
 
 
 Route.on('/').render('welcome')
-Route.get('/login/',"UserController.authorization")
+Route.get('/registration', "UserController.registration").middleware('guest')
+Route.get('/login', "UserController.login").middleware('guest')
+Route.get('/userData', "UserController.info").middleware('auth')
+Route.get('/exit', "UserController.exit").middleware('guest')
 
 
 
-/* 
-const  LoginRequest= (login,password)=>{
-    ///TO DO TRANSACTION IT EMULATION
-    let user = USERS_BD_EMUL.filter(elem=> elem.login===login)[0] 
-    if(user&&user.password===password){
-        return user
-    }else{
-        return false
-    } */
