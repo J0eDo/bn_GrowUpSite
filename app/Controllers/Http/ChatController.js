@@ -16,12 +16,13 @@ class ChatController {
     }
     async Test2({ response }) {
         const user = await User.find(1)
-        const userRecipientID = 2;
-        const message = new Message();
-        message.idrecipient = userRecipientID;
-        message.body = "HELLOU RELEITIONTSHIP";
-        await user.messages().save(message); 
-        return response.json({ user })
+        const data = {
+            idrecipient:21,
+            body:'text'
+        }
+        const message = Message.create(data);
+       /*  await user.messages().attach(message) */
+        await user.messages().save(message)
     }
 }
 
