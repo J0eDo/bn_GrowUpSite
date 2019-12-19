@@ -3,12 +3,13 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class MessagesSchema extends Schema {
+class MessageSchema extends Schema {
   up () {
     this.create('messages', (table) => {
       table.increments()
-      table.string('title', 80).notNullable()
-      table.string('userName', 80).notNullable()
+      table.integer('user_id').unsigned().references('id').inTable('users')
+      table.integer('idrecipient').notNullable()
+      table.string('body').notNullable()
       table.timestamps()
     })
   }
@@ -18,4 +19,4 @@ class MessagesSchema extends Schema {
   }
 }
 
-module.exports = MessagesSchema
+module.exports = MessageSchema
