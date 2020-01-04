@@ -7,7 +7,7 @@ class ProfileSchema extends Schema {
   up () {
     this.create('profiles', (table) => {
       table.increments()
-      table.integer('user_id').unsigned().references('id').inTable('users').onDelete('cascade')
+      table.integer('user_id').unsigned().references('users.id').onDelete('cascade')
       table.string('avatar').defaultTo('man')
       table.string('sex').defaultTo('man')
       table.integer('balance').defaultTo(100)
